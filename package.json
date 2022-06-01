@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.3.1",
+    "@react-navigation/native": "^6.0.10",
+    "react-native-gesture-handler": "^2.4.2",
+    "react-native-reanimated": "^2.8.0",
+    "react-native-screens": "^3.13.1"
+  }
+}
