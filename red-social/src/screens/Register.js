@@ -13,7 +13,7 @@ class Register extends Component {
 	render(){
 		return (
 			<View style= {styles.container}>
-			<Text>Register</Text>
+			{this.props.error != "" ? <Text style= {styles.error}>{this.props.error}</Text>: <Text>Registro</Text> }
 			<TextInput style= {styles.field}
 			keyboardType= "email-address"
 			placeholder= "Email"
