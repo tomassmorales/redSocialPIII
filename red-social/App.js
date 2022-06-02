@@ -2,11 +2,13 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import TabMenu from "./src/components/TabMenu"
+import MainNav from "./src/components/MainNav"
+
 
 export default function App() {
   return (
 
-    <TabMenu/>
+    <MainNav/>
 
   );
 }

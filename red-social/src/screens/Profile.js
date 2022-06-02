@@ -1,5 +1,6 @@
 import React, {Component} from "react"
-import {Text} from 'react-native';
+import {Text, TouchableOpacity,View} from 'react-native';
+import {auth} from "../firebase/config" 
 
 class Profile extends Component {
 	constructor(props){
@@ -9,7 +10,14 @@ class Profile extends Component {
 	}
 	render(){
 		return (
-			<Text>PROFILE</Text>
+			<View>
+				<Text>{auth.currentUser.email}</Text>
+		                <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
+				<Text>Último acceso: {auth.currentUser.metadata.lastSignInTime}</Text>
+				<TouchableOpacity onPress= {()=> this.props.route.params.logout()}>
+					<Text>LogOut</Text>
+				</TouchableOpacity>
+			</View>
 		);
 	}
 }

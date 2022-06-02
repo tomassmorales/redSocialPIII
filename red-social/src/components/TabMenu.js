@@ -25,8 +25,6 @@ class TabMenu extends Component{
 
 	render(){
 		return(
-			// sacar navigation container una vez hacemos la main navigation
-			<NavigationContainer> 
 			<Tab.Navigator screenOptions={ { tabBarShowLabel: false } }>
 				<Tab.Screen
 				name= "Home" 
@@ -41,9 +39,9 @@ class TabMenu extends Component{
 				options = {
 				{ tabBarIcon: ()=> <EvilIcons name="user" size={24} color="black" />}
 				}
+				initialParams = {{logout: ()=> this.props.route.params.logout()}}
 				/>
 			</Tab.Navigator>
-			</NavigationContainer>
 		)
 	}
 
