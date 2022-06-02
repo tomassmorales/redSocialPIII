@@ -41,6 +41,8 @@ class Register extends Component {
 	}
 }
 
+//FALTA CHEQUEAR LO DE LA COLECCIÓN DE USUARIOS
+
 const styles = StyleSheet.create(
 	{
 		container: {
