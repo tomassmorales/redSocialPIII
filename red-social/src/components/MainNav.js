@@ -2,7 +2,7 @@ import React, {Component} from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import {auth} from "../firebase/config" 
+import {auth, db} from "../firebase/config" 
 
 
 let Stack = createNativeStackNavigator();
@@ -58,15 +58,21 @@ class MainNav extends Component {
 	register(email,password){
 		auth.createUserWithEmailAndPassword(email,password)
 		.then( (response) => {
-			auth.signInWithEmailAndPassword(email,password)
-			.then((resp) => {
-				this.setState({
-					loggedIn:true
-				})
+			console.log(response);
+			db.collection("users").add({
+				userEmail: email,
 			})
-			.catch((error) => {
-				this.setState({
-					logError: error.message
+			.then((r) => {
+				auth.signInWithEmailAndPassword(email,password)
+				.then((resp) => {
+					this.setState({
+						loggedIn:true
+					})
+				})
+				.catch((error) => {
+					this.setState({
+						logError: error.message
+					})
 				})
 			})
 		})
