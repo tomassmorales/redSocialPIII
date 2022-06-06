@@ -61,6 +61,7 @@ class MainNav extends Component {
 			console.log(response);
 			db.collection("users").add({
 				userEmail: email,
+				createdAt: Date.now(),
 			})
 			.then((r) => {
 				auth.signInWithEmailAndPassword(email,password)
