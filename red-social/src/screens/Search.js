@@ -1,0 +1,77 @@
+import React, {Component} from 'react';
+import { db, auth } from '../firebase/config';
+import { View,
+         Text,
+         TextInput,
+         TouchableOpacity, 
+         StyleSheet, 
+         ActivityIndicator,
+         FlatList, 
+         Image } from 'react-native';
+//import Post from './Post';
+
+class Search extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            users:[],
+            email:'',
+            whoIs:'',
+        }
+    }
+    
+    // Obtener información a partir de una búsqueda.
+    search(email){ 
+        db.collection('users').where('owner', '==', email).onSnapshot(
+            docs => {
+                let users = [];
+                docs.forEach( oneDoc => {
+                    users.push({
+                        id: oneDoc.id,
+                        data: oneDoc.data()
+                    })
+                })
+
+                this.setState({
+                    users: users,
+                    email:'',
+                    whoIs: email,
+                })
+            }
+        )
+    }
+
+    render(){
+        // console.log(this.state);
+        return(
+                <View>
+                {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
+                    <Text>Busqueda de usuario: {this.state.whoIs}</Text>
+                    <View style={styles.form}>
+                        <TextInput 
+                            style={styles.field}
+                            keyboardType='default'
+                            placeholder='email a buscar...'
+                            value={this.state.email}
+                            onChangeText={text => this.setState({ email: text})}
+                        />  
+                        <TouchableOpacity
+                            style={styles.button} 
+                            onPress={()=>this.search(this.state.email)}
+                            //👇 Les dejo un dato sorpresa para los que llegaron hasta acá: así se deshabilita un touchable opacity
+                            disabled= {this.state.email == '' ? true : false }
+                            >
+                            <Text style={ styles.buttonText}>Buscar</Text>
+                        </TouchableOpacity>                         
+                    </View>
+                    <FlatList 
+                        data={this.state.users}
+                        keyExtractor={post => users.id}
+                        renderItem = { <View Text = 'luquitas'/> }
+                    />
+                    
+                </View>
+
+        )
+    }
+}
