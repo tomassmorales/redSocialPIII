@@ -6,6 +6,8 @@ class Profile extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
+			email:'',
+			password:''
 		}
 	}
 	render(){
@@ -23,3 +25,4 @@ class Profile extends Component {
 }
 
 export default Profile;
+
