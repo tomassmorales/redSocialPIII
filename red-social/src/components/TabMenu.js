@@ -34,6 +34,13 @@ class TabMenu extends Component{
 				}
 				/>
 				<Tab.Screen
+				name= "Buscar"
+				component= { Search }
+				options = {
+				{ tabBarIcon: ()=> <EvilIcons name="search" size={24} color="black" />}
+				}
+				/>
+				<Tab.Screen
 				name= "Perfil"
 				component= { Profile }
 				options = {

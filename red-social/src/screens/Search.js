@@ -75,3 +75,38 @@ class Search extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        padding:10
+    },
+    form:{
+        flex:1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginHorizontal:20,
+    },
+    field:{
+        borderColor: '#dcdcdc',
+        borderWidth: 1,
+        borderRadius: 2,
+        padding:3,
+        marginBottom:8,
+        width:'70%',
+        marginBottom: 0,
+        lineHeight:40,
+    },
+    button: {
+        borderRadius: 2,
+        padding:3,
+        backgroundColor: 'green',
+        width:'29%',
+        textAlign: 'center',
+    },
+    buttonText:{
+        color: '#fff'
+    }
+})
+
+export default Search;
