@@ -60,13 +60,15 @@ class Post extends Component{
                     <Text>Post de: {this.props.dataPost.data.owner}</Text>
                     <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
-                    <TouchableOpacity onPress={()=> this.unLike()}>
+                    {
+                        this.state.myLike ?
+                        <TouchableOpacity onPress={()=> this.unLike()}>
                             <Text>Quitar Like</Text>
-                        </TouchableOpacity>
-                    <TouchableOpacity onPress={()=> this.like()}>
+                        </TouchableOpacity> :
+                        <TouchableOpacity onPress={()=> this.like()}>
                             <Text>Like</Text>
-                    </TouchableOpacity> 
-
+                        </TouchableOpacity>                
+                    }
                 </View>
         )
     }
