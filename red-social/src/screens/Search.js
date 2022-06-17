@@ -50,7 +50,7 @@ class Search extends Component {
                         <TextInput 
                             style={styles.field}
                             keyboardType='default'
-                            placeholder='email a buscar...'
+                            placeholder='posteo a buscar...'
                             value={this.state.email}
                             onChangeText={text => this.setState({ email: text})}
                         />  
