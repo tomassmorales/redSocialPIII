@@ -17,22 +17,25 @@ class Post extends Component{
         }
     }
 
-   
-
-  
-
-   
-
-
     render(){
         return(
-                <View >
-                    <Text> Posteos </Text>
-                                    
+                <View style={styles.separator}>
+                    <Text>Post de: {this.props.dataPost.data.owner}</Text>
+                    <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                 </View>
         )
     }
 
 }
+
+const styles = StyleSheet.create({
+    separator:{
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
+        marginBottom: 10,
+        paddingHorizontal:20
+    },
+    
+})
 
 export default Post;

@@ -8,13 +8,13 @@ import { View,
          ActivityIndicator,
          FlatList, 
          Image } from 'react-native';
-//import Post from './Post';
+import Post from './Post';
 
 class Search extends Component {
     constructor(props){
         super(props);
         this.state={
-            users:[],
+            posts:[],
             email:'',
             whoIs:'',
         }
@@ -22,18 +22,18 @@ class Search extends Component {
     
     // Obtener información a partir de una búsqueda.
     search(email){ 
-        db.collection('users').where('owner', '==', email).onSnapshot(
+        db.collection('posts').where('owner', '==', email).onSnapshot(
             docs => {
-                let users = [];
+                let posts = [];
                 docs.forEach( oneDoc => {
-                    users.push({
+                    posts.push({
                         id: oneDoc.id,
                         data: oneDoc.data()
                     })
                 })
 
                 this.setState({
-                    users: users,
+                    posts: posts,
                     email:'',
                     whoIs: email,
                 })
@@ -45,8 +45,7 @@ class Search extends Component {
         // console.log(this.state);
         return(
                 <View>
-                {/* Si no hay resultados deben mostrar un mensaje al usuario. Puede ser un mensaje único o segmenteado: en caso de que el usuario no exista o si el usuario existe indicar que aún no tiene posteos. */}
-                    <Text>Busqueda de usuario: {this.state.whoIs}</Text>
+                    <Text>Busqueda de posteo: {this.state.whoIs}</Text>
                     <View style={styles.form}>
                         <TextInput 
                             style={styles.field}
@@ -58,16 +57,15 @@ class Search extends Component {
                         <TouchableOpacity
                             style={styles.button} 
                             onPress={()=>this.search(this.state.email)}
-                            //👇 Les dejo un dato sorpresa para los que llegaron hasta acá: así se deshabilita un touchable opacity
                             disabled= {this.state.email == '' ? true : false }
                             >
                             <Text style={ styles.buttonText}>Buscar</Text>
                         </TouchableOpacity>                         
                     </View>
                     <FlatList 
-                        data={this.state.users}
-                        keyExtractor={post => users.id}
-                        renderItem = { <View Text = 'luquitas'/> }
+                        data={this.state.posts}
+                        keyExtractor={users => users.id}
+                        renderItem = { ({item}) => <Post dataPost={item} />}
                     />
                     
                 </View>

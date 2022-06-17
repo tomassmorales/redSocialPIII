@@ -21,7 +21,7 @@ class Home extends Component {
 	}
 
 	componentDidMount(){
-        db.collection('users').onSnapshot(
+        db.collection('posts').onSnapshot(
             docs => {
                 let posts = [];
                 docs.forEach( oneDoc => {
