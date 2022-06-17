@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
+import Comments from './Comments';
 
 class Post extends Component{
     constructor(props){
@@ -69,6 +70,9 @@ class Post extends Component{
                             <Text>Like</Text>
                         </TouchableOpacity>                
                     }
+                    <TouchableOpacity onPress={ () => this.props.navigation.navigate('Comments', { id: this.props.dataPost.id})} > 
+                        <Text>Ver comentarios</Text>
+                    </TouchableOpacity>
                 </View>
         )
     }
