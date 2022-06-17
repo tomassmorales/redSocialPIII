@@ -40,6 +40,19 @@ class Post extends Component{
             .catch(error => console.log(error))
 
     }
+    unLike(){
+        //Agregar el email del user logueado en el array
+        db.collection('posts')
+            .doc(this.props.dataPost.id)
+            .update({
+                likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+            })
+            .then(()=> this.setState({
+                cantidadDeLikes:this.state.cantidadDeLikes - 1, //Se puede mejorar
+                myLike: false
+            }))
+            .catch(error => console.log(error))
+    }
 
     render(){
         return(
@@ -47,6 +60,9 @@ class Post extends Component{
                     <Text>Post de: {this.props.dataPost.data.owner}</Text>
                     <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
+                    <TouchableOpacity onPress={()=> this.unLike()}>
+                            <Text>Quitar Like</Text>
+                        </TouchableOpacity>
                     <TouchableOpacity onPress={()=> this.like()}>
                             <Text>Like</Text>
                     </TouchableOpacity> 
