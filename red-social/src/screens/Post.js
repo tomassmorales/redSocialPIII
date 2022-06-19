@@ -90,7 +90,8 @@ const styles = StyleSheet.create({
         borderBottomColor: '#ddd',
         borderBottomWidth: 1,
         marginBottom: 10,
-        paddingHorizontal:20
+        paddingHorizontal:20, 
+        flex: 1
     }, 
     image:{ 
         width:100, 
