@@ -9,6 +9,9 @@ import {
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
 import Comments from './Comments';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 
 class Post extends Component{
     constructor(props){
