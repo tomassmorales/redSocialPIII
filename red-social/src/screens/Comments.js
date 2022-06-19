@@ -62,7 +62,7 @@ class Comments extends Component{
                         keyExtractor={ post => post.createdAt}
                         renderItem = { ({item}) => <Text>{item.text}</Text> }
                     />
-                    {/* Un formulario para cargar un comentario */}
+                    {/* El formulario para cargar un comentario */}
                     <TextInput 
                     style={styles.field}
                     keyboardType='default'

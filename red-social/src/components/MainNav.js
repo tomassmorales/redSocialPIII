@@ -98,11 +98,11 @@ class MainNav extends Component {
 						options={{headerShown:false}}
 						initialParams = {{ logout: ()=> this.logout()}}
 						/>
-					        <Stack.Screen
-					        name= "Comments"
-					        component= {Comments}
-					        options={{headerShown:true}}
-					        />
+					    <Stack.Screen
+					    name= "Comments"
+					    component= {Comments}
+					    options={{headerShown:true}}
+					    />
 					</Stack.Group>
 					:
 					<Stack.Group>
