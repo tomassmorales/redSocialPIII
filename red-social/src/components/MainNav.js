@@ -10,6 +10,7 @@ let Stack = createNativeStackNavigator();
 import Login from "../screens/Login";
 import Register from "../screens/Register";
 import TabMenu from "./TabMenu";
+import Comments from "../screens/Comments"
 
 
 class MainNav extends Component {
@@ -97,6 +98,11 @@ class MainNav extends Component {
 						options={{headerShown:false}}
 						initialParams = {{ logout: ()=> this.logout()}}
 						/>
+					        <Stack.Screen
+					        name= "comentarios"
+					        component= {Comments}
+					        options={{headerShown:true}}
+					        />
 					</Stack.Group>
 					:
 					<Stack.Group>
