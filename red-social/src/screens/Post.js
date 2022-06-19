@@ -4,7 +4,9 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet, 
+    FlatList,
+    Image
 } from 'react-native';
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
@@ -62,6 +64,7 @@ class Post extends Component{
         return(
                 <View style={styles.separator}>
                     <Text>Post de: {this.props.dataPost.data.owner}</Text>
+                    <Image style={styles.image} source={{uri:this.props.dataPost.data.url}} resizeMode='contain'/>
                     <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
                     {
@@ -88,7 +91,11 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         marginBottom: 10,
         paddingHorizontal:20
-    },
+    }, 
+    image:{ 
+        width:100, 
+        height:100
+    }
     
 })
 
