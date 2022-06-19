@@ -41,16 +41,16 @@ class Home extends Component {
     }
 
 	render(){
-		console.log(this.state.posts);
+		console.log(this.props);
 
 		return ( 
 			<View> 
 			<Text> Listado de Posteos </Text> 
 			<FlatList 
                         data={this.state.posts}
-                        keyExtractor={post => post.id}
-                        renderItem = { ({item}) => <Post dataPost={item} navigation= {this.props.navigation}{...this.props} />}
-                    /> 
+                        keyExtractor={post => post.id.toString()}
+                        renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>}
+                        /> 
 			</View>
 		);
 	}
