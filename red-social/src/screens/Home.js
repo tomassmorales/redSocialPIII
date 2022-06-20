@@ -44,16 +44,23 @@ class Home extends Component {
 		console.log(this.props);
 
 		return ( 
-			<View> 
+			<View style={styles.styleHome}> 
 			<Text> Listado de Posteos </Text> 
 			<FlatList 
                         data={this.state.posts}
                         keyExtractor={post => post.id.toString()}
-                        renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>}
-                        /> 
+                        renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>} //le pasamos toda la data del posteo
+            /> 
 			</View>
 		);
 	}
 }
 
-export default Home;
+const styles = StyleSheet.create({
+    styleHome:{
+        flex: 1
+    }
+})
+
+export default Home; 
+

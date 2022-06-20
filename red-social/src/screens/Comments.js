@@ -16,6 +16,7 @@ class Comments extends Component{
         super(props)
         this.state={
             comments:[],
+            cantidadDeComentarios: 0,
             commentText:''
         }
     }
@@ -26,7 +27,8 @@ class Comments extends Component{
         .doc(this.props.route.params.id)
         .onSnapshot( doc => {
                 this.setState({
-                    comments:doc.data().comments
+                    comments:doc.data().comments,
+                    cantidadDeComentarios: doc.data().comments.length
                 })
             }
         )
@@ -46,7 +48,8 @@ class Comments extends Component{
         })
         .then( () => {
             this.setState({
-                commentText: ''
+                commentText: '',
+                cantidadDeComentarios: this.state.cantidadDeComentarios + 1
             })
         })
     }
@@ -56,20 +59,25 @@ class Comments extends Component{
         return(
                 <View>
                     <Text> Comentarios</Text>
+                    <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
                     {/* Renderizar la lista de comentarios del posteo */}
+                    {this.cantidadDeComentarios = 0 ?
+                        <Text>No hay comentarios aun</Text>
+                    :  
                     <FlatList 
                         data={this.state.comments}
                         keyExtractor={ post => post.createdAt}
-                        renderItem = { ({item}) => <Text>{item.text}</Text> }
+                        renderItem = { ({item}) => <Text> {item.owner} ha comentado:      {item.text}</Text> }
                     />
-                    {/* Un formulario para cargar un comentario */}
+                    }
+                    {/* El formulario para cargar un comentario */}
                     <TextInput 
                     style={styles.field}
                     keyboardType='default'
                     placeholder='Agregar un comentario'
                     onChangeText={text => this.setState({ commentText: text})}
                     value={this.state.commentText}
-                />
+                    />
                 <TouchableOpacity style={styles.button} onPress={()=>this.agregarComentarios()}>
                     <Text style={ styles.buttonText}>Comentar</Text>
                 </TouchableOpacity>   
