@@ -15,8 +15,6 @@ import Search from "../screens/Search"
 const Tab= createBottomTabNavigator();
 
 import { EvilIcons } from '@expo/vector-icons';  
-import { FontAwesome, Foundation } from '@expo/vector-icons'
-
 
 class TabMenu extends Component{
 
@@ -40,9 +38,9 @@ class TabMenu extends Component{
 				<Tab.Screen 
 				name= 'new Post'
 				component={ NewPost }
-                options={
-                        { tabBarIcon: () => <FontAwesome name="photo" size={24} color="black" /> }
-                    }
+                                options={
+                                { tabBarIcon: () => <EvilIcons name="image" size={24} color="black" />}
+                                }
 				> 
 				</Tab.Screen>
 				<Tab.Screen
