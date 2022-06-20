@@ -52,14 +52,14 @@ class Search extends Component {
                             keyboardType='default'
                             placeholder='posteo a buscar...'
                             value={this.state.email}
-                            onChangeText={text => this.setState({ email: text})}
+                            onChangeText={text => this.setState({ email: text})} //guardo lo que escribe en el estado
                         />  
                         <TouchableOpacity
                             style={styles.button} 
                             onPress={()=>this.search(this.state.email)}
                             disabled= {this.state.email == '' ? true : false }
-                            >
-                            <Text style={ styles.buttonText}>Buscar</Text>
+                        >
+                        <Text style={ styles.buttonText}>Buscar</Text>
                         </TouchableOpacity>                         
                     </View>
                     <FlatList 

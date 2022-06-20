@@ -67,7 +67,7 @@ class Comments extends Component{
 
                     <FlatList 
                         data={this.state.comments} //array con info
-                        keyExtractor={ post => post.createdAt}
+                        keyExtractor={ comentario => comentario.createdAt}
                         renderItem = { ({item}) => <Text> {item.owner} ha comentado:      {item.text}</Text> }
                     />
                     
