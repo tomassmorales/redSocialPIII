@@ -98,7 +98,7 @@ class MainNav extends Component {
 						options={{headerShown:false}}
 						initialParams = {{ logout: ()=> this.logout()}}
 						/>
-					    <Stack.Screen
+					    <Stack.Screen //para que se pueda navegar desde el menu a los comentarios
 					    name= "Comments"
 					    component= {Comments}
 					    options={{headerShown:true}}

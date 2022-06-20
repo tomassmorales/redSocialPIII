@@ -19,8 +19,8 @@ class Post extends Component{
     constructor(props){
         super(props)
         this.state={
-            cantidadDeLikes:this.props.dataPost.data.likes.length,
-            myLike:false,
+            cantidadDeLikes: this.props.dataPost.data.likes.length,
+            myLike:false, //de base pensamos que no likeo aun
         }
     }
 

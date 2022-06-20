@@ -16,6 +16,7 @@ class Comments extends Component{
         super(props)
         this.state={
             comments:[],
+            cantidadDeComentarios: 0,
             commentText:''
         }
     }
@@ -26,7 +27,8 @@ class Comments extends Component{
         .doc(this.props.route.params.id)
         .onSnapshot( doc => {
                 this.setState({
-                    comments:doc.data().comments
+                    comments:doc.data().comments,
+                    cantidadDeComentarios: doc.data().comments.length
                 })
             }
         )
@@ -46,7 +48,8 @@ class Comments extends Component{
         })
         .then( () => {
             this.setState({
-                commentText: ''
+                commentText: '',
+                cantidadDeComentarios: this.state.cantidadDeComentarios + 1
             })
         })
     }
@@ -57,6 +60,8 @@ class Comments extends Component{
                 <View>
                     <Text> Comentarios</Text>
                     {/* Renderizar la lista de comentarios del posteo */}
+                    <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
+
                     <FlatList 
                         data={this.state.comments}
                         keyExtractor={ post => post.createdAt}
