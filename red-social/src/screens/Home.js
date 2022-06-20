@@ -23,9 +23,9 @@ class Home extends Component {
 	componentDidMount(){
         db.collection('posts').onSnapshot(
             docs => {
-                let posts = [];
+                let posts = []; //creamos array
                 docs.forEach( oneDoc => {
-                    posts.push({
+                    posts.push({ //le colocamos al array una nueva estructura de obj.lit
                         id: oneDoc.id,
                         data: oneDoc.data()
                     })
@@ -47,8 +47,8 @@ class Home extends Component {
 			<View style={styles.styleHome}> 
 			<Text> Listado de Posteos </Text> 
 			<FlatList 
-                        data={this.state.posts}
-                        keyExtractor={post => post.id.toString()}
+                        data={this.state.posts} //array a recorrer
+                        keyExtractor={post => post.id.toString()} //clave unica
                         renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>} //le pasamos toda la data del posteo
             /> 
 			</View>
