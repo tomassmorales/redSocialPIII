@@ -21,22 +21,7 @@ class NewPost extends Component{
         }
     }
 
-    guardarPost(){
-         db.collection('posts').add({
-                createdAt: Date.now(),
-                owner: auth.currentUser.email,
-                description: this.state.description,
-                likes:[],
-                comments:[],
-                url: this.state.url
-            })
-            .then( response => this.setState({
-                description:'',
-            },
-            ()=>this.props.navigation.navigate('Home')))
-            .catch(error => console.log(error) )
-    }
-
+    
     onImageUpload(url){
         this.setState({
             url: url,
@@ -63,7 +48,8 @@ class NewPost extends Component{
                     />
                     <TouchableOpacity style={styles.button} onPress={()=>this.guardarPost()}>
                         <Text style={styles.buttonText}>Guardar Post</Text>
-                    </TouchableOpacity>               
+                    </TouchableOpacity>     
+                                
                 </View>
 
             }

@@ -65,11 +65,13 @@ class MyCamera extends Component{
 
     }
 
-    eliminarPreview(){
-        this.setState({
-			url: "",
-			showCamera: true
-		})
+    eliminarPreview(){ 
+        fetch(this.state.url)
+            .then( response => response.blob())
+            .then(
+
+            )
+       .catch(error => console.log(error))
     }
 
     render(){
@@ -101,10 +103,11 @@ class MyCamera extends Component{
                             onPress={()=>this.guardarFoto()}>
                             <Text>Guardar Foto</Text>
                         </TouchableOpacity>
+                        
                         <TouchableOpacity 
                             style={styles.button}
                             onPress={()=>this.eliminarPreview()}>
-                            <Text>Eliminar</Text>
+                            <Text>Eliminar Foto</Text>
                         </TouchableOpacity>
                     </View> 
                 :
