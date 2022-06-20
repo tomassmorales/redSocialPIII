@@ -47,7 +47,7 @@ componentDidMount(){
 				<TouchableOpacity onPress= {()=> this.props.route.params.logout()}>
 					<Text>LogOut</Text>
 				</TouchableOpacity> 
-				<View >
+				<View style={styles.styleProfile}>
 				<FlatList 
 					data={this.state.posts}
 					keyExtractor={post => post.id.toString()}
