@@ -61,7 +61,7 @@ class Comments extends Component{
                     <Text> Comentarios</Text>
                     <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
                     {/* Renderizar la lista de comentarios del posteo */}
-                    {this.cantidadDeComentarios == 0 ?
+                    {this.cantidadDeComentarios = 0 ?
                         <Text>No hay comentarios aun</Text>
                     :  
                     <FlatList 
