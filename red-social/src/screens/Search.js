@@ -65,7 +65,7 @@ class Search extends Component {
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={users => users.id}
-                        renderItem = { ({item}) => <Post dataPost={item} />}
+                        renderItem = { ({item}) => <Post dataPost={item} navegacion={this.props.navigation} />}
                     />
                     
                 </View>

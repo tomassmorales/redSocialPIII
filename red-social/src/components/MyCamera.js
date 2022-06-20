@@ -65,8 +65,12 @@ class MyCamera extends Component{
 
     }
 
-
-
+    eliminarPreview(){
+        this.setState({
+			url: "",
+			showCamera: true
+		})
+    }
 
     render(){
         return(
