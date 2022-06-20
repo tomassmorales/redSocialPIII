@@ -24,7 +24,7 @@ class Post extends Component{
         }
     }
 
-    componentDidMount(){
+    componentDidMount(){ //chequeamos si el mail esta dentro del array
         if(this.props.dataPost.data.likes.includes(auth.currentUser.email)){
             this.setState({
                 myLike: true,
@@ -33,14 +33,13 @@ class Post extends Component{
     }
 
     like(){
-        //Agregar el email del user logueado en el array
-        db.collection('posts')
-            .doc(this.props.dataPost.id)
-            .update({
-                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
+        db.collection('posts') //nombre de la coleccion a modificar
+            .doc(this.props.dataPost.id) //id del documento a modificar
+            .update({ //metodo asinc. que actualiza le pasamos un obj.lit
+                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email) //propiedad a actualizar
             })
-            .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes + 1, //Se puede mejorar.
+            .then(()=> this.setState({ //lo que se ejecuta dsp.
+                cantidadDeLikes:this.state.cantidadDeLikes + 1, 
                 myLike: true,
             }))
             .catch(error => console.log(error))
@@ -54,7 +53,7 @@ class Post extends Component{
                 likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
             })
             .then(()=> this.setState({
-                cantidadDeLikes:this.state.cantidadDeLikes - 1, //Se puede mejorar
+                cantidadDeLikes:this.state.cantidadDeLikes - 1, 
                 myLike: false
             }))
             .catch(error => console.log(error))
@@ -68,10 +67,10 @@ class Post extends Component{
                     <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
                     {
-                        this.state.myLike ?
+                        this.state.myLike ? //si myLike es true
                         <TouchableOpacity onPress={()=> this.unLike()}>
                             <Text>Quitar Like</Text>
-                        </TouchableOpacity> :
+                        </TouchableOpacity> : //si myLike es false
                         <TouchableOpacity onPress={()=> this.like()}>
                             <Text>Like</Text>
                         </TouchableOpacity>                

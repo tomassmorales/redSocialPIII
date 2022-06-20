@@ -50,7 +50,7 @@ class Home extends Component {
                         data={this.state.posts}
                         keyExtractor={post => post.id.toString()}
                         renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>}
-                        /> 
+            /> 
 			</View>
 		);
 	}

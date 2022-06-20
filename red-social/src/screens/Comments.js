@@ -60,7 +60,7 @@ class Comments extends Component{
                     <FlatList 
                         data={this.state.comments}
                         keyExtractor={ post => post.createdAt}
-                        renderItem = { ({item}) => <Text>{item.text}</Text> }
+                        renderItem = { ({item}) => <Text> {item.owner} ha comentado:      {item.text}</Text> }
                     />
                     {/* El formulario para cargar un comentario */}
                     <TextInput 
@@ -69,7 +69,7 @@ class Comments extends Component{
                     placeholder='Agregar un comentario'
                     onChangeText={text => this.setState({ commentText: text})}
                     value={this.state.commentText}
-                />
+                    />
                 <TouchableOpacity style={styles.button} onPress={()=>this.agregarComentarios()}>
                     <Text style={ styles.buttonText}>Comentar</Text>
                 </TouchableOpacity>   
