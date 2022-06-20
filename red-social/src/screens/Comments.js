@@ -59,16 +59,18 @@ class Comments extends Component{
         return(
                 <View>
                     <Text> Comentarios</Text>
-                    <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
-                    {this.cantidadDeComentarios = 0 ?
+                    {this.state.cantidadDeComentarios == 0 ?
                         <Text>No hay comentarios aun</Text>
-                    :  
+                    : 
+                        <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
+                    }
+
                     <FlatList 
                         data={this.state.comments} //array con info
                         keyExtractor={ post => post.createdAt}
                         renderItem = { ({item}) => <Text> {item.owner} ha comentado:      {item.text}</Text> }
                     />
-                    }
+                    
                     <TextInput 
                     style={styles.field}
                     keyboardType='default'
