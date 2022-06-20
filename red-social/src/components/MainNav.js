@@ -99,7 +99,7 @@ class MainNav extends Component {
 						initialParams = {{ logout: ()=> this.logout()}}
 						/>
 					        <Stack.Screen
-					        name= "Comments"
+						name= "Comments"
 					        component= {Comments}
 					        options={{headerShown:true}}
 					        />
