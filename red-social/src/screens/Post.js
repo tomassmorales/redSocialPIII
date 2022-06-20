@@ -21,6 +21,7 @@ class Post extends Component{
         this.state={
             cantidadDeLikes: this.props.dataPost.data.likes.length,
             myLike:false, //de base pensamos que no likeo aun
+            cantidadDeComentarios: this.props.dataPost.data.comments.length
         }
     }
 
@@ -75,6 +76,7 @@ class Post extends Component{
                             <Text>Like</Text>
                         </TouchableOpacity>                
                     }
+                    <Text>Cantidad de comentarios: {this.state.cantidadDeComentarios}</Text>
                     <TouchableOpacity onPress={ () => this.props.navegacion.navigate('Comments', { id: this.props.dataPost.id})} > 
                         <Text>Ver comentarios</Text>
                     </TouchableOpacity>

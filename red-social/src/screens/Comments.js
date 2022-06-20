@@ -24,8 +24,8 @@ class Comments extends Component{
     componentDidMount(){
         //Obtener todos los comentarios de un posteo para renderizarlos. Hay que usar el id que recibimos por parámetro.
         db.collection('posts')
-        .doc(this.props.route.params.id)
-        .onSnapshot( doc => {
+        .doc(this.props.route.params.id) 
+        .onSnapshot( doc => { //callback para actualizar el estado
                 this.setState({
                     comments:doc.data().comments,
                     cantidadDeComentarios: doc.data().comments.length
@@ -48,7 +48,7 @@ class Comments extends Component{
         })
         .then( () => {
             this.setState({
-                commentText: '',
+                commentText: '', 
                 cantidadDeComentarios: this.state.cantidadDeComentarios + 1
             })
         })
@@ -60,17 +60,15 @@ class Comments extends Component{
                 <View>
                     <Text> Comentarios</Text>
                     <Text> Total de comentarios: {this.state.cantidadDeComentarios} </Text>
-                    {/* Renderizar la lista de comentarios del posteo */}
                     {this.cantidadDeComentarios = 0 ?
                         <Text>No hay comentarios aun</Text>
                     :  
                     <FlatList 
-                        data={this.state.comments}
+                        data={this.state.comments} //array con info
                         keyExtractor={ post => post.createdAt}
                         renderItem = { ({item}) => <Text> {item.owner} ha comentado:      {item.text}</Text> }
                     />
                     }
-                    {/* El formulario para cargar un comentario */}
                     <TextInput 
                     style={styles.field}
                     keyboardType='default'

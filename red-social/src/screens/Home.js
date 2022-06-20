@@ -49,7 +49,7 @@ class Home extends Component {
 			<FlatList 
                         data={this.state.posts} //array a recorrer
                         keyExtractor={post => post.id.toString()} //clave unica
-                        renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>} //le pasamos toda la data del posteo
+                        renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>} //le pasamos las props de navegacion al componente posteo
             /> 
 			</View>
 		);
