@@ -18,7 +18,6 @@ class MyCamera extends Component{
             showCamera: true,
             url:''
         }  
-        this.metodosDeCamara = '' 
     }
 
     componentDidMount(){
@@ -66,6 +65,8 @@ class MyCamera extends Component{
 
     }
 
+  
+        
     eliminarPreview(){ 
         this.setState({
 			url: "",

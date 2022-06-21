@@ -45,6 +45,8 @@ class NewPost extends Component{
         })
     }
 
+    
+
 
     render(){
         return(

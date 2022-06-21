@@ -11,6 +11,7 @@ import {
 import {auth, db} from '../firebase/config';
 import firebase from 'firebase';
 import Comments from './Comments';
+import { EvilIcons } from '@expo/vector-icons';  
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
@@ -67,11 +68,11 @@ class Post extends Component{
     render(){
         return(
                 <View style={styles.separator}>
-                    <Text>Post de: {this.props.dataPost.data.owner}</Text>
-                    {this.props.dataPost.data.owner == auth.currentUser.email ? <TouchableOpacity onPress = {(id)=> this.borrarPost(this.props.dataPost.id)}><Text>X</Text></TouchableOpacity> : <Text></Text>}
+                    <Text style={styles.text}>{this.props.dataPost.data.owner}</Text>
+                    {this.props.dataPost.data.owner == auth.currentUser.email ? <TouchableOpacity onPress = {(id)=> this.borrarPost(this.props.dataPost.id)}></TouchableOpacity> : <Text></Text>}
                     <Image style={styles.image} source={{uri:this.props.dataPost.data.url}} resizeMode='contain'/>
-                    <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
-                    <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>
+                    <Text style={styles.text}> {this.props.dataPost.data.description}</Text>
+                    <Text> <EvilIcons name="heart" size={20} color="red"> </EvilIcons>{this.state.cantidadDeLikes}</Text>
                     {
                         this.state.myLike ? //si myLike es true
                         <TouchableOpacity onPress={()=> this.unLike()}>
@@ -97,11 +98,16 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         marginBottom: 10,
         paddingHorizontal:20, 
-        flex: 1
+        flex: 1,
+        alignItems: 'center',
+        
     }, 
     image:{ 
-        width:100, 
-        height:100
+        width:260, 
+        height:260, 
+    }, 
+    text:{ 
+        fontWeight: 'bold'
     }
     
 })
