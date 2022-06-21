@@ -65,7 +65,7 @@ class Search extends Component {
                         </TouchableOpacity>                         
                     </View>
                     {this.state.cantidadDeResultados == 0 ?
-                    <Text> Aun no hay posteos de este usuario </Text>
+                    <Text> Aun no hay posteos de "{this.state.whoIs}" </Text>
                     :
                     <FlatList 
                         data={this.state.posts}
