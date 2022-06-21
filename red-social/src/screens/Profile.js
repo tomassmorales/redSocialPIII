@@ -16,7 +16,7 @@ class Profile extends Component {
 			email:'',
 			password:'',
 			posts: [],
-			user:{},
+			username:"",
 			loading: true,
 		}
 	}
@@ -31,13 +31,12 @@ componentDidMount(){
 					data: oneDoc.data()
 				})
 			})
-
 			this.setState({
 				posts: posts
 		})
 		}
 	)
-	db.collection("users").where("email", "==", auth.currentUser.email).onSnapshot(
+	db.collection("users").where("userEmail", "==", auth.currentUser.email).onSnapshot(
 		docs=>{ 
 			let user = []; 
 			docs.forEach( oneDoc => {
@@ -46,8 +45,9 @@ componentDidMount(){
 					data: oneDoc.data()
 				})
 			})
+			console.log(user);
 			this.setState({
-				user: user[0], 
+				username: user[0].data.username, 
 				loading: false
 			})
 		}
@@ -56,10 +56,9 @@ componentDidMount(){
 
 
 	render(){
-		console.log(this.state.user)
 		return (
 			<View style={styles.styleProfile}>
-				<Text> Hola /nombre de usuario/</Text>
+				<Text> Hola {this.state.username}</Text>
 				<Text> {auth.currentUser.email}</Text>
 		        <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
 				<Text>Último acceso: {auth.currentUser.metadata.lastSignInTime}</Text>
@@ -73,7 +72,6 @@ componentDidMount(){
 					keyExtractor={post => post.id.toString()}
 					renderItem = { ({item})  => <Post dataPost={item} 
 					{...this.props} />}
-				
 				/>
 				</View>
 			</View>
