@@ -45,7 +45,7 @@ class Home extends Component {
 
 		return ( 
 			<View style={styles.styleHome}> 
-			<Text> Listado de Posteos </Text> 
+			<Text> Listado de Posteos </Text>
 			<FlatList 
                         data={this.state.posts} //array a recorrer
                         keyExtractor={post => post.id.toString()} //clave unica
