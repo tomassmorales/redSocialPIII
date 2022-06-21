@@ -77,9 +77,9 @@ class Comments extends Component{
                     onChangeText={text => this.setState({ commentText: text})}
                     value={this.state.commentText}
                     />
-                <TouchableOpacity style={styles.button} onPress={()=>this.agregarComentarios()}>
-                    <Text style={ styles.buttonText}>Comentar</Text>
-                </TouchableOpacity>   
+                    <TouchableOpacity style={styles.button} onPress={()=>this.agregarComentarios()}>
+                        <Text style={ styles.buttonText}>Comentar</Text>
+                    </TouchableOpacity>   
                 </View>
         )
     }
