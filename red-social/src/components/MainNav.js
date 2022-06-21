@@ -56,12 +56,13 @@ class MainNav extends Component {
 		})
 	}
 
-	register(email,password){
+	register(email,password, username){
 		auth.createUserWithEmailAndPassword(email,password)
 		.then( (response) => {
 			console.log(response);
 			db.collection("users").add({
 				userEmail: email,
+				username: username,
 				createdAt: Date.now(),
 			})
 			.then((r) => {
@@ -117,7 +118,7 @@ class MainNav extends Component {
 						name= "Register"
 						// component = {Register}
 						options = {{headerShown: false}}
-						initialParams = {{register: (email,password)=> this.register(email, password)}}
+						initialParams = {{register: (email,password, username)=> this.register(email, password, username)}}
 						children={ (props) => <Register error= {this.state.regError} {...props} /> }
 						/>
 					</Stack.Group>

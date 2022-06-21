@@ -41,8 +41,9 @@ class MyCamera extends Component{
             })
             .catch()
 
-
     }
+
+
 
     guardarFoto(){
         fetch(this.state.url)
@@ -66,12 +67,7 @@ class MyCamera extends Component{
     }
 
     eliminarPreview(){ 
-        fetch(this.state.url)
-            .then( response => response.blob())
-            .then(
-
-            )
-       .catch(error => console.log(error))
+        
     }
 
     render(){
