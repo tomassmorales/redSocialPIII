@@ -39,7 +39,7 @@ class MyCamera extends Component{
                     showCamera: false,
                 })
             })
-            .catch()
+            .catch(e => console.log(e))
 
     }
 
@@ -67,7 +67,10 @@ class MyCamera extends Component{
     }
 
     eliminarPreview(){ 
-        
+        this.setState({
+			url: "",
+			showCamera: true
+		})
     }
 
     render(){
