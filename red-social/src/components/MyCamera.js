@@ -18,7 +18,6 @@ class MyCamera extends Component{
             showCamera: true,
             url:''
         }  
-        this.metodosDeCamara = '' 
     }
 
     componentDidMount(){
@@ -66,7 +65,7 @@ class MyCamera extends Component{
 
     }
 
-    eliminarPreview(){ 
+    eliminarPost(){ 
         
     }
 
@@ -102,7 +101,7 @@ class MyCamera extends Component{
                         
                         <TouchableOpacity 
                             style={styles.button}
-                            onPress={()=>this.eliminarPreview()}>
+                            onPress={()=>this.eliminarPost()}>
                             <Text>Eliminar Foto</Text>
                         </TouchableOpacity>
                     </View> 

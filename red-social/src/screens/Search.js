@@ -60,9 +60,11 @@ class Search extends Component {
                             style={styles.button} 
                             onPress={()=>this.search(this.state.email)}
                             disabled= {this.state.email == '' ? true : false }
+                            
                         >
                         <Text style={ styles.buttonText}>Buscar</Text>
-                        </TouchableOpacity>                         
+                        </TouchableOpacity> 
+                        <ActivityIndicator size='large' color="red" animating={false}> </ActivityIndicator>                        
                     </View>
                     {this.state.cantidadDeResultados == 0 ?
                     <Text> Aun no hay posteos de "{this.state.whoIs}" </Text>

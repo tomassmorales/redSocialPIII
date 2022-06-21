@@ -46,11 +46,13 @@ class Home extends Component {
 		return ( 
 			<View style={styles.styleHome}> 
 			<Text> Listado de Posteos </Text> 
-			<FlatList 
+			 
+            <FlatList
                         data={this.state.posts} //array a recorrer
                         keyExtractor={post => post.id.toString()} //clave unica
                         renderItem = { ({item}) => <Post dataPost={item} navegacion= {this.props.navigation}/>} //le pasamos las props de navegacion al componente posteo
             /> 
+            
 			</View>
 		);
 	}
@@ -58,8 +60,10 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
     styleHome:{
+        
         flex: 1
     }
+    
 })
 
 export default Home; 
