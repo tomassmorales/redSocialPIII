@@ -48,7 +48,7 @@ class Post extends Component{
 
     }
     unLike(){
-        //Agregar el email del user logueado en el array
+        //sacar el email del user logueado en el array
         db.collection('posts')
             .doc(this.props.dataPost.id)
             .update({
