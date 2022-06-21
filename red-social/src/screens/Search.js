@@ -17,6 +17,7 @@ class Search extends Component {
             posts:[],
             email:'',
             whoIs:'',
+            cantidadDeResultados: 'hace tu busqueda'
         }
     }
     
@@ -36,6 +37,7 @@ class Search extends Component {
                     posts: posts,
                     email:'',
                     whoIs: email,
+                    cantidadDeResultados: posts.length
                 })
             }
         )
@@ -62,11 +64,15 @@ class Search extends Component {
                         <Text style={ styles.buttonText}>Buscar</Text>
                         </TouchableOpacity>                         
                     </View>
+                    {this.state.cantidadDeResultados == 0 ?
+                    <Text> Aun no hay posteos de este usuario </Text>
+                    :
                     <FlatList 
                         data={this.state.posts}
                         keyExtractor={users => users.id}
                         renderItem = { ({item}) => <Post dataPost={item} navegacion={this.props.navigation} />}
                     />
+                    }
                     
                 </View>
 
