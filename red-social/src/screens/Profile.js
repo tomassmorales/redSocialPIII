@@ -13,11 +13,8 @@ class Profile extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			email:'',
-			password:'',
-			posts: [],
 			username:"",
-			loading: true,
+			posts: [],
 		}
 	}
 
@@ -48,7 +45,6 @@ componentDidMount(){
 			console.log(user);
 			this.setState({
 				username: user[0].data.username, 
-				loading: false
 			})
 		}
 	)

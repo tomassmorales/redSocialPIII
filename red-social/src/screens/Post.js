@@ -69,8 +69,7 @@ class Post extends Component{
         return(
                 <View style={styles.separator}>
                     <Text style={styles.text}>{this.props.dataPost.data.owner}</Text>
-                    <Text>Post de: {this.props.dataPost.data.owner}</Text>
-                    {this.props.dataPost.data.owner == auth.currentUser.email ? <TouchableOpacity onPress = {(id)=> this.borrarPost(this.props.dataPost.id)}><Text>X</Text></TouchableOpacity> : <Text></Text>}
+                    {this.props.dataPost.data.owner == auth.currentUser.email ? <TouchableOpacity onPress = {(id)=> this.borrarPost(this.props.dataPost.id)}></TouchableOpacity> : <Text></Text>}
                     <Image style={styles.image} source={{uri:this.props.dataPost.data.url}} resizeMode='contain'/>
                     <Text style={styles.text}> {this.props.dataPost.data.description}</Text>
                     <Text> <EvilIcons name="heart" size={20} color="red"> </EvilIcons>{this.state.cantidadDeLikes}</Text>
