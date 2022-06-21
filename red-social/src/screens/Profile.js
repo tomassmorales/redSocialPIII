@@ -37,7 +37,7 @@ componentDidMount(){
 		})
 		}
 	)
-	db.collections("users").where("email", "==", auth.currentUser.email).onSnapshot(
+	db.collection("users").where("email", "==", auth.currentUser.email).onSnapshot(
 		docs=>{ 
 			let user = []; 
 			docs.forEach( oneDoc => {
@@ -56,11 +56,14 @@ componentDidMount(){
 
 
 	render(){
+		console.log(this.state.user)
 		return (
 			<View style={styles.styleProfile}>
-				<Text>{this.state.user.data.username}</Text>
-		                <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
+				<Text> Hola /nombre de usuario/</Text>
+				<Text> {auth.currentUser.email}</Text>
+		        <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
 				<Text>Último acceso: {auth.currentUser.metadata.lastSignInTime}</Text>
+				<Text>Cantidad de posteos: {this.state.posts.length}</Text>
 				<TouchableOpacity onPress= {()=> this.props.route.params.logout()}>
 					<Text>LogOut</Text>
 				</TouchableOpacity> 
