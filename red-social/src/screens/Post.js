@@ -60,10 +60,15 @@ class Post extends Component{
             .catch(error => console.log(error))
     }
 
+    borrarPost(id){
+        db.collection("posts").doc(id).delete()
+    }
+
     render(){
         return(
                 <View style={styles.separator}>
                     <Text>Post de: {this.props.dataPost.data.owner}</Text>
+                    {this.props.dataPost.data.owner == auth.currentUser.email ? <TouchableOpacity onPress = {(id)=> this.borrarPost(this.props.dataPost.id)}><Text>X</Text></TouchableOpacity> : <Text></Text>}
                     <Image style={styles.image} source={{uri:this.props.dataPost.data.url}} resizeMode='contain'/>
                     <Text>Texto del Post: {this.props.dataPost.data.description}</Text>
                     <Text>Cantidad de likes: {this.state.cantidadDeLikes}</Text>

@@ -49,7 +49,6 @@ class Comments extends Component{
         .then( () => {
             this.setState({
                 commentText: '', 
-                cantidadDeComentarios: this.state.cantidadDeComentarios + 1
             })
         })
     }

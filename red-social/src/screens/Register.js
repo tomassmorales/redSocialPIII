@@ -6,7 +6,7 @@ class Register extends Component {
 		super(props);
 		this.state = {
 			email: "",
-			user: "",
+			username: "",
 			password: ""
 		}
 	}
@@ -24,7 +24,7 @@ class Register extends Component {
 			<TextInput style= {styles.field}
 			keyboardType= "default"
 			placeholder= "Nombre de usuario"
-			onChangeText = { (text) => this.setState({user: text})}
+			onChangeText = { (text) => this.setState({username: text})}
 			/>
 			<TextInput style= {styles.field}
 			keyboardType= "default"
@@ -32,7 +32,7 @@ class Register extends Component {
 			secureTextEntry= {true}
 			onChangeText = { (text) => this.setState({password: text})}
 			/>
-			<TouchableOpacity style= {styles.boton} onPress = { () => this.props.route.params.register(this.state.email,this.state.password) }>
+			<TouchableOpacity style= {styles.boton} onPress = { () => this.props.route.params.register(this.state.email,this.state.password, this.state.username) }>
 				<Text style= {styles.botonText} >Registrarme e Iniciar Sesión</Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={styles.botonDos} onPress = { ()=> this.props.navigation.navigate("Login")}>

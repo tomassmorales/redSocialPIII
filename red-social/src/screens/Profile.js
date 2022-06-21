@@ -3,7 +3,8 @@ import {Text,
 		TouchableOpacity,
 		View, 
 		FlatList, 
-		StyleSheet} from 'react-native';
+		StyleSheet, 
+	} from 'react-native';
 import {auth, db} from "../firebase/config" 
 import Post from './Post'
 
@@ -15,7 +16,8 @@ class Profile extends Component {
 			email:'',
 			password:'',
 			posts: [],
-			user:{},
+			username:"",
+			loading: true,
 		}
 	}
 
@@ -29,10 +31,25 @@ componentDidMount(){
 					data: oneDoc.data()
 				})
 			})
-
 			this.setState({
 				posts: posts
 		})
+		}
+	)
+	db.collection("users").where("userEmail", "==", auth.currentUser.email).onSnapshot(
+		docs=>{ 
+			let user = []; 
+			docs.forEach( oneDoc => {
+				user.push({
+					id: oneDoc.id, 
+					data: oneDoc.data()
+				})
+			})
+			console.log(user);
+			this.setState({
+				username: user[0].data.username, 
+				loading: false
+			})
 		}
 	)
 }
@@ -41,9 +58,11 @@ componentDidMount(){
 	render(){
 		return (
 			<View style={styles.styleProfile}>
-				<Text>{auth.currentUser.email}</Text>
-		                <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
+				<Text> Hola {this.state.username}</Text>
+				<Text> {auth.currentUser.email}</Text>
+		        <Text>Since: {auth.currentUser.metadata.creationTime}</Text>
 				<Text>Último acceso: {auth.currentUser.metadata.lastSignInTime}</Text>
+				<Text>Cantidad de posteos: {this.state.posts.length}</Text>
 				<TouchableOpacity onPress= {()=> this.props.route.params.logout()}>
 					<Text>LogOut</Text>
 				</TouchableOpacity> 
@@ -53,7 +72,6 @@ componentDidMount(){
 					keyExtractor={post => post.id.toString()}
 					renderItem = { ({item})  => <Post dataPost={item} 
 					{...this.props} />}
-				
 				/>
 				</View>
 			</View>
