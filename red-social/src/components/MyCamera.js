@@ -38,7 +38,7 @@ class MyCamera extends Component{
                     showCamera: false,
                 })
             })
-            .catch()
+            .catch(e => console.log(e))
 
     }
 
@@ -65,8 +65,13 @@ class MyCamera extends Component{
 
     }
 
-    eliminarPost(){ 
+  
         
+    eliminarPreview(){ 
+        this.setState({
+			url: "",
+			showCamera: true
+		})
     }
 
     render(){
@@ -101,7 +106,7 @@ class MyCamera extends Component{
                         
                         <TouchableOpacity 
                             style={styles.button}
-                            onPress={()=>this.eliminarPost()}>
+                            onPress={()=>this.eliminarPreview()}>
                             <Text>Eliminar Foto</Text>
                         </TouchableOpacity>
                     </View> 

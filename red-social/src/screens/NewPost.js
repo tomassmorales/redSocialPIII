@@ -32,6 +32,7 @@ class NewPost extends Component{
             })
             .then( response => this.setState({
                 description:'',
+                showCamera: true
             },
             ()=>this.props.navigation.navigate('Home')))
             .catch(error => console.log(error) )
