@@ -22,9 +22,8 @@ class Comments extends Component{
     }
 
     componentDidMount(){
-        //Obtener todos los comentarios de un posteo para renderizarlos. Hay que usar el id que recibimos por parámetro.
         db.collection('posts')
-        .doc(this.props.route.params.id) 
+        .doc(this.props.route.params.id) //usamos el id que recibimos por parámetro.
         .onSnapshot( doc => { //callback para actualizar el estado
                 this.setState({
                     comments:doc.data().comments,
@@ -34,12 +33,10 @@ class Comments extends Component{
         )
     }
 
-    //Agregar comentario tiene que agregar un comentario dentro de un posteo. Puntualmente dentro de un array de comentarios.
     agregarComentarios(){
-        //actualizar una colleción.
         db.collection('posts')
         .doc(this.props.route.params.id) //Cual es el posteo en donde voy a poner un nuevo comentario.
-        .update({
+        .update({ //actualizamos la colleción.
             comments:firebase.firestore.FieldValue.arrayUnion({
                 owner: auth.currentUser.email,
                 text:this.state.commentText,

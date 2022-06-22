@@ -35,10 +35,10 @@ class Post extends Component{
     }
 
     like(){
-        db.collection('posts') //nombre de la coleccion a modificar
+        db.collection('posts') 
             .doc(this.props.dataPost.id) //id del documento a modificar
-            .update({ //metodo asinc. que actualiza le pasamos un obj.lit
-                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email) //propiedad a actualizar
+            .update({ 
+                likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email) //o.l
             })
             .then(()=> this.setState({ //lo que se ejecuta dsp.
                 cantidadDeLikes:this.state.cantidadDeLikes + 1, 

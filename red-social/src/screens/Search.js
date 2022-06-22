@@ -21,7 +21,6 @@ class Search extends Component {
         }
     }
     
-    // Obtener información a partir de una búsqueda.
     search(email){ 
         db.collection('posts').where('owner', '==', email).onSnapshot(
             docs => {
@@ -44,9 +43,8 @@ class Search extends Component {
     }
 
     render(){
-        // console.log(this.state);
         return(
-                <View>
+                <View styles ={styles.lista}>
                     <Text>Busqueda de posteo: {this.state.whoIs}</Text>
                     <View style={styles.form}>
                         <TextInput 
@@ -83,6 +81,10 @@ class Search extends Component {
 }
 
 const styles = StyleSheet.create({
+    lista:{
+        flex:1
+
+    },
     container:{
         flex:1,
         padding:10
