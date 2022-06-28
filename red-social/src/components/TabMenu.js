@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import { StyleSheet } from "react-native"
 
-
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 
@@ -12,7 +10,7 @@ import Profile from "../screens/Profile";
 import NewPost from '../screens/NewPost';
 import Search from "../screens/Search"
 
-const Tab= createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 import { EvilIcons } from '@expo/vector-icons';  
 

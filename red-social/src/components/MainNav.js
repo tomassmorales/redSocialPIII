@@ -56,7 +56,7 @@ class MainNav extends Component {
 		})
 	}
 
-	register(email,password, username){
+	register(email,password, user){
 		auth.createUserWithEmailAndPassword(email,password)
 		.then( (response) => {
 			console.log(response);
@@ -109,7 +109,7 @@ class MainNav extends Component {
 					<Stack.Group>
 						<Stack.Screen
 						name = "Login"
-						// component = {Login}
+						// component = {Login}09
 						options= {{headerShown: false}}
 						initialParams = {{login: (email,password)=> this.logIn(email,password)}}
 						children= { (props) => <Login error= {this.state.logError} {...props} /> }

@@ -25,7 +25,7 @@ componentDidMount(){
 			docs.forEach( oneDoc => {
 				posts.push({
 					id: oneDoc.id, 
-					data: oneDoc.data()
+					data: oneDoc.data() 
 				})
 			})
 			this.setState({
@@ -77,6 +77,7 @@ componentDidMount(){
 
 const styles = StyleSheet.create({
     styleProfile:{
+		width: '100%',
         flex: 1
     }
 })
